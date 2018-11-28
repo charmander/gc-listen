@@ -1,0 +1,26 @@
+{
+	"name": "gc-listen",
+	"version": "0.1.0",
+	"description": "Calls a function when V8 collects an object as garbage",
+	"keywords": [
+		"gc"
+	],
+	"bugs": "https://github.com/charmander/gc-listen/issues",
+	"license": "ISC",
+	"author": {
+		"name": "Charmander",
+		"email": "~@charmander.me",
+		"url": "https://charmander.me/"
+	},
+	"files": [
+		"src/gc-listen.c"
+	],
+	"main": "build/Release/gc-listen",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/charmander/gc-listen"
+	},
+	"engines": {
+		"node": ">=10.13.1"
+	}
+}
