@@ -55,8 +55,22 @@ static void finalize_loop_callback(uv_idle_t* const idle) {
 		FAIL_AND_ABORT("napi_get_undefined failed")
 	}
 
-	if (napi_call_function(env, undefined, callback, 0, NULL, NULL) != napi_ok) {
-		FAIL_AND_ABORT("napi_call_function failed")
+	napi_status const status = napi_call_function(env, undefined, callback, 0, NULL, NULL);
+
+	if (status != napi_ok) {
+		if (status == napi_pending_exception) {
+			napi_value exc;
+
+			if (napi_get_and_clear_last_exception(env, &exc) != napi_ok) {
+				FAIL_AND_ABORT("napi_get_and_clear_last_exception failed")
+			}
+
+			if (napi_fatal_exception(env, exc) != napi_ok) {
+				FAIL_AND_ABORT("napi_fatal_exception failed")
+			}
+		} else {
+			FAIL_AND_ABORT("napi_call_function failed")
+		}
 	}
 
 	if (napi_close_handle_scope(env, scope) != napi_ok) {
