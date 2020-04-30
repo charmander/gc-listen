@@ -1,6 +1,6 @@
 {
 	"name": "gc-listen",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Calls a function when V8 collects an object as garbage",
 	"keywords": [
 		"gc"
@@ -21,6 +21,6 @@
 		"url": "https://github.com/charmander/gc-listen"
 	},
 	"engines": {
-		"node": ">=10.13.1"
+		"node": ">=10.13.1 <11 || >=12.11.0"
 	}
 }
