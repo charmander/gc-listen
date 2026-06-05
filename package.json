@@ -13,6 +13,7 @@
 		"url": "https://charmander.me/"
 	},
 	"files": [
+		"binding.gyp",
 		"src/gc-listen.c"
 	],
 	"main": "build/Release/gc-listen",
